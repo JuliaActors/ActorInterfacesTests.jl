@@ -51,8 +51,8 @@ end
 
 const PING_COUNT = 50_000
 
-function run_becamepingpong_test(lib::ActorLib)
-    return @testset "ActorInterfaceTests/spawner: Spawning children and sending messages to them" begin
+function run_becomepingpong_test(lib::ActorLib)
+    return @testset "ActorInterfaceTests/became_pingpong: changing type with become" begin
         @test ex_actorcount(lib) == 0
         becamer = BecamePinger(PING_COUNT)
         becameraddr = ex_spawn!(lib, becamer)
