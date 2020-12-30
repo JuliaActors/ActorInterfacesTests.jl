@@ -8,7 +8,7 @@ struct SpawnTree
     depth::UInt8
 end
 
-@ctx function Classic.onmessage(me::Spawner, msg::SpawnTree)
+@ctx function (me::Spawner)(msg::SpawnTree)
     if msg.depth > 0
         for i = 1:msg.childcount
             child = spawn(Spawner())
@@ -21,7 +21,7 @@ end
 const TREE_HEIGHT = 15
 const TREE_SIZE = 2^(TREE_HEIGHT + 1) - 1
 
-function run_spawnertest(lib::ActorLib)    
+function run_spawnertest(lib::ActorLib)
     return @testset "ActorInterfaceTests/spawner: Spawning children and sending messages to them" begin
         @test ex_actorcount(lib) == 0
         root = Spawner()
